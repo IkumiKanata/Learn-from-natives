@@ -10,7 +10,8 @@ export default class App extends Component {
      inputWord: '',
      videoIDs: [], //holds youtubeID from tedAPI to use them in subtitleAPI and thumbnail 
      subtitleDatas:[], //place subtitles for 3 videos 
-     tatgetSubtitleLine: []
+     tatgetSubtitleLine: [],
+     selectshow: false,
   }
 
 
@@ -55,6 +56,7 @@ export default class App extends Component {
           return videodata.data
         })})
         console.log(this.state.subtitleDatas) 
+        this.setState({selectshow: true})
       
       }
     )
@@ -66,6 +68,22 @@ export default class App extends Component {
   render() {
 
     // const cards = 
+    let cards = null;
+    if (this.state.selectshow) {
+      cards =  (
+
+        <>
+          {this.state.videoIDs.map((ID, i) => {
+            console.log(this.state.subtitleDatas[i][i].text)
+            return <Card id={ID} text={this.state.subtitleDatas[i][i].text}></Card>
+          })}
+          {/* <Card id={this.state.videoIDs[0]} />
+          <Card id={this.state.videoIDs[1]} />
+          <Card id={this.state.videoIDs[2]} /> */}
+        </>
+        )
+    }
+
       return (
           <>
               <form onSubmit = {this.fetchWord}> {/* //refer your function using `this`. Need page transtion here as well */}
@@ -73,9 +91,9 @@ export default class App extends Component {
                   {/* <Link href="/"> */}
                   <input type = 'submit' placeholder='GO' value = 'GO'></input>
                   {/* </Link> */}
-
               </form>
-              <Card id={"IoRjz8iTVoo"}/>
+                  {cards}
+             
           </>
       );
   }
