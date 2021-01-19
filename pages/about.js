@@ -29,7 +29,7 @@ export default class App extends Component {
     {params: {
       size:2,
       text: this.state.inputWord,
-      "rapidapi-key": "put your apikey here"
+      "rapidapi-key": process.env.NEXT_PUBLIC_API_KEY
     } //put param with - in ""
     }
       )
@@ -52,7 +52,7 @@ export default class App extends Component {
         this.state.videoIDs.map(async (videoID) => 　//mapのなかasync await を使う
         await axios.get(
           "https://subtitles-for-youtube.p.rapidapi.com/subtitles/" + videoID + 
-            "?translated=None&type=None&lang=en&rapidapi-key=" + "apikey needed over here")))
+            "?translated=None&type=None&lang=en&rapidapi-key=" + process.env.NEXT_PUBLIC_API_KEY)))
     
       return resultList
       // return(axios.get("https://subtitles-for-youtube.p.rapidapi.com/subtitles/" + this.state.videoIDs[0] + "?translated=None&type=None&lang=en&rapidapi-key=162b20e307msh2eba9c1841b675cp1fbe1fjsnc8adcd4c4201")) //ここでforLoopをかけて、全てのvideoIDの数の字幕をゲットしたい
