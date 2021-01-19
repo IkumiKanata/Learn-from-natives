@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 400,
+    maxWidth: 450,
   },
   media: {
     height: 200,
@@ -28,14 +28,15 @@ export default function MediaCard(props) {
         <CardMedia
           className={classes.media}
           image={"http://img.youtube.com/vi/" + props.id + "/mqdefault.jpg"}
-          title="Contemplative Reptile"
+          title={props.title}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {props.text}
+            {props.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.text}
+            {props.text[0].text}    
+            {/* Thank youとか先頭が大文字になる奴は inputWordが全部小文字になるので、includeでtrueにならず、textの値がundefinedになる */}
           </Typography>
         </CardContent>
       </CardActionArea>
