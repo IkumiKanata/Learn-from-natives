@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Link from "next/link";
 
 const useStyles = makeStyles({
   root: {
@@ -25,11 +26,14 @@ export default function MediaCard(props) {
     return (
     <Card className={classes.root}>
       <CardActionArea>
+        <Link href="/" passHref>
+          
         <CardMedia
           className={classes.media}
           image={"http://img.youtube.com/vi/" + props.id + "/mqdefault.jpg"}
           title={props.title}
         />
+        </Link>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {props.title}
