@@ -22,7 +22,7 @@ export default class App extends Component {
   };
 
 
-  fetchWord = (e) => { 
+  fetchAPI = (e) => { 
     e.preventDefault();
     console.log(this.state.inputWord)//You will get value here
     axios.get('https://bestapi-ted-v1.p.rapidapi.com/transcriptFreeText',
@@ -71,7 +71,7 @@ export default class App extends Component {
         for (let i = 0; i < this.state.subtitleDatas.length; i++) {
           subtitleWord.push(
             this.state.subtitleDatas[i].filter((element) => {
-              return element.text.includes(this.state.inputWord) === true;
+              return element.text.toLowerCase().includes(this.state.inputWord) === true;
                 /* Thank youとか先頭が大文字になる奴は inputWordが全部小文字になるので、includeでtrueにならず、textの値がundefinedになる */
             })
   
@@ -117,7 +117,7 @@ export default class App extends Component {
 
       return (
           <>
-              <form onSubmit = {this.fetchWord}> {/* //refer your function using `this`. Need page transtion here as well */}
+              <form onSubmit = {this.fetchAPI}> {/* //refer your function using `this`. Need page transtion here as well */}
                   <input type = 'text' placeholder = 'happiness, in order to, put aside...' name="inputWord" value={this.state.inputWord} onChange={this.handleChange} ></input>
                   <input type='submit' placeholder='GO' value = 'GO'></input>
               </form>
