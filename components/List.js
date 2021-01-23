@@ -1,9 +1,10 @@
 import React, { forwardRef } from "react";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import ListItem from '@material-ui/core/ListItem';
+import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { FixedSizeList } from 'react-window';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,7 @@ function RenderRow(props) {
 
   return (
     <ListItem button style={style} key={index}>
+      <PlayCircleOutlineRoundedIcon/>
       <ListItemText primary={data[index].text} />  
       {/* ここのListItemTextに受け取った別ファイルである親コンポーネントから受け取って、利用したい*/}
     </ListItem>
@@ -35,9 +37,9 @@ RenderRow.propTypes = {
   
 };
 
-function handleOnClick() {
+function handleOnClick(props) {
   // Your handler goes here ...
-  console.log("");
+  console.log(props);
 }
 
 const outerElementType = forwardRef((props, ref) => (

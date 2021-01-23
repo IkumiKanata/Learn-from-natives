@@ -3,8 +3,8 @@ import Head from 'next/head'
 import axios from "axios";
 import React, {Component} from "react"; 
 import Link from 'next/link';
-import Card from "./Card";
-import VirtualizedList from "./List";
+import Card from "../components/Card";
+import VirtualizedList from "../components/List";
 
 export default class App extends Component {
   state={
@@ -72,9 +72,7 @@ export default class App extends Component {
           subtitleWord.push(
             this.state.subtitleDatas[i].filter((element) => {
               return element.text.toLowerCase().includes(this.state.inputWord) === true;
-                /* Thank youとか先頭が大文字になる奴は inputWordが全部小文字になるので、includeでtrueにならず、textの値がundefinedになる */
             })
-  
           )
         }
 
@@ -103,15 +101,9 @@ export default class App extends Component {
         <>
           {this.state.videoIDs.map((ID, i) => {
             // console.log(this.state.subtitleDatas[i][i].text)
-            return <Card id={ID} title={this.state.videoTitles[i]} text={this.state.targetSubtitleLines[i]} key={i}></Card>
+            return <Card id={ID} title={this.state.videoTitles[i]} text={this.state.targetSubtitleLines[i]} inputWord={this.state.inputWord} key={i}></Card>
           })}
-          <iframe id="ytplayer" type="text/html" width="640" height="360"
-            src={"https://www.youtube.com/embed/" + this.state.videoIDs[0] + "?autoplay=0&origin=http://example.com"}
-            frameBorder="0">  
-          </iframe>
-          <VirtualizedList sub={this.state.subtitleDatas[0]}/>
-          
-        </>
+         </>
         )
     }
 
