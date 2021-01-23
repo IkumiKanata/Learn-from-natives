@@ -9,7 +9,7 @@ import { FixedSizeList } from 'react-window';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    height: 400,
+    height: 500,
     maxWidth: 500,
     backgroundColor: theme.palette.background.paper,
   },
@@ -48,13 +48,11 @@ const outerElementType = forwardRef((props, ref) => (
 
 export default function VirtualizedList(props) { //親コンポーネントからはここに
   const classes = useStyles();
-  console.log(props.sub)
+  // console.log(props.sub)
   
   return (
-    <div className={classes.root}>
-      <h1>SUBTITLE</h1>
-    
-      <FixedSizeList height={400} width={400} itemSize={46} itemCount={props.sub.length} itemData={props.sub} outerElementType={outerElementType}
+    <div className={classes.root}>    
+      <FixedSizeList height={400} width={400} itemSize={66} itemCount={props.sub.length}  itemData={props.sub} outerElementType={outerElementType}
  >
 
 
