@@ -2,26 +2,15 @@ import React, {useState, useEffect} from "react";
 import { useRouter } from 'next/router';
 import VirtualizedList from "../components/List";
 import axios from "axios";
-import Example from "../components/YoutubePlayer";
 import Link from 'next/link';
+import VideoPlayer from "../components/YoutubePlayer";
+
 
 const Comment = () => {
   const router = useRouter()
   const slug = router.query.slug || []
   console.log(router.query.slug)
-  let time = 100;
-
-  // const [data, setData] = useState([]);
-
-// useEffect(async () => {
-// const result = await axios.get(
-//   "https://subtitles-for-youtube.p.rapidapi.com/subtitles/" + router.query.slug[1] + 
-//             "?translated=None&type=None&lang=en&rapidapi-key=" + process.env.NEXT_PUBLIC_API_KEY)
-    
-
-//     setData(result.data);
-//     console.log(data)
-//   }, []);
+  let time = 100
 
 const [data1, setData1] = useState({ hits:[] });
 const [data2, setData2] = useState({hit2:[]});
@@ -59,14 +48,14 @@ const [showResults, setShowResults] = useState(true)
 
   return (
 
-
     <>
     <Link href="/about">
       <a>back to search </a>
     </Link>
       {/* <h1>Slug: {slug.join('/')}</h1> */}
-      {/* <iframe id="sup" width="560" height="315" src={"https://www.youtube.com/embed/" + router.query.slug[1] + "?start=" + time} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-      <Example videoId={router.query.slug[1]}/>
+
+      <VideoPlayer videoId={router.query.slug[1] } fullSub={data1} />
+
       
          <button onClick={() => {
            setShowResults(!showResults)
