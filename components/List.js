@@ -12,20 +12,23 @@ const useStyles = makeStyles((theme) => ({
     height: 500,
     maxWidth: 500,
     backgroundColor: theme.palette.background.paper,
+    position: 'relative',
+    overflow: 'auto',
   },
 }));
 
 function RenderRow(props) { 
+  // console.log(props.Ref)
 
-  const {data,index, style } = props;
-  console.log(data)
+  const {data,index, style,} = props;
+  // console.log(props)
 
 
 
   return (
-    <ListItem button style={style} key={index}>
+    <ListItem button style={style} key={index} onClick={() => {props.data.time(data.sub[index].start)}}>
       <PlayCircleOutlineRoundedIcon/>
-      <ListItemText primary={data[index].text} />  
+      <ListItemText primary={data.sub[index].text}  />  
       {/* ここのListItemTextに受け取った別ファイルである親コンポーネントから受け取って、利用したい*/}
     </ListItem>
   );
@@ -37,29 +40,32 @@ RenderRow.propTypes = {
   
 };
 
-function handleOnClick(props) {
-  // Your handler goes here ...
-  console.log(props);
-}
-
-const outerElementType = forwardRef((props, ref) => (
-  <ListItem ref={ref} onClick={handleOnClick} {...props} />
-));
-
 export default function VirtualizedList(props) { //親コンポーネントからはここに
   const classes = useStyles();
-  // console.log(props.sub)
-  
-  return (
-    <div className={classes.root}>    
-      <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.sub.length} itemData={props.sub} outerElementType={outerElementType}
- >
-{/*  itemCount={props.sub.length}  */}
+  console.log(props.time)
 
-    {RenderRow}
-      </FixedSizeList>
-    </div>
-  );
+
+  if(props.targetSub) { //もし、渡されてきたpropsがtargetなら、targetをレンダー
+    
+    return (
+      <div className={classes.root}> 
+        <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.targetSub.length} itemData={{sub:props.targetSub, time:props.time}} >  
+      {RenderRow}
+        </FixedSizeList>
+      </div>
+    );
+  }
+
+  else if(props.fullSub) {
+    
+    return (
+      <div className={classes.root}> 
+        <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.fullSub.length} itemData={{sub:props.fullSub, time:props.time}}>  
+      {RenderRow}
+        </FixedSizeList>
+      </div>
+    );
+  }
 }
 
 

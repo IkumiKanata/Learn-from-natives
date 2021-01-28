@@ -4,6 +4,7 @@ import VirtualizedList from "../components/List";
 import axios from "axios";
 import Link from 'next/link';
 import VideoPlayer from "../components/YoutubePlayer";
+import PinnedSubheaderList from "../components/List2"
 
 
 const Comment = () => {
@@ -54,15 +55,22 @@ const [showResults, setShowResults] = useState(true)
     </Link>
       {/* <h1>Slug: {slug.join('/')}</h1> */}
 
-      <VideoPlayer videoId={router.query.slug[1] } fullSub={data1} />
+      <VideoPlayer videoId={router.query.slug[1] } title={router.query.slug[2]} fullSub={data1} targetSub={data2} />
 
       
-         <button onClick={() => {
+         {/* <button onClick={() => {
            setShowResults(!showResults)
          }}>{showResults? "Show Full script":"Show target lines"}</button>
       {showResults ? <h1>Phrases with {router.query.slug[2]}</h1>:<h1>FULLSUB</h1>}
-      {showResults ? <VirtualizedList sub={data2}/>:
-      <VirtualizedList sub={data1}/>}
+      {showResults ? <VirtualizedList targetSub={data2}/>:
+      <VirtualizedList fullSub={data1}/>} */}
+      
+         {/* <button onClick={() => {
+           setShowResults(!showResults)
+         }}>{showResults? "Show Full script":"Show target lines"}</button>
+      {showResults ? <h1>Phrases with {router.query.slug[2]}</h1>:<h1>FULLSUB</h1>}
+      {showResults ? <PinnedSubheaderList sub={data2}/>:
+      <PinnedSubheaderList sub={data1}/>}  */}
     </>
   )
 }

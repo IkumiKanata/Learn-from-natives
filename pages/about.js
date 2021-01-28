@@ -27,7 +27,7 @@ export default class App extends Component {
     console.log(this.state.inputWord)//You will get value here
     axios.get('https://bestapi-ted-v1.p.rapidapi.com/transcriptFreeText',
     {params: {
-      size:2,
+      size:3,
       text: this.state.inputWord,
       "rapidapi-key": process.env.NEXT_PUBLIC_API_KEY
     } //put param with - in ""

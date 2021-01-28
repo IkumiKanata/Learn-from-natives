@@ -48,14 +48,15 @@
 
 // // export default Example
 
-import React, { useRef } from "react";
+import React, { useRef,useState } from "react";
 import YouTube from "react-youtube";
-
+import VirtualizedList from "./List";
 // ...
 
-const MyComponent = (props) => {
+const VideoPlayer = (props) => {
   // Initialises a 'ref' for the player
   const playerRef = useRef(null);
+  const [showResults, setShowResults] = useState(true)
   console.log(playerRef)
 
   // You can now access the player in your component
@@ -63,8 +64,8 @@ const MyComponent = (props) => {
   // ... See below for an example:
 
   // Our own custom function to pause the video
-  const Jumpto60s = () => {
-    playerRef.current.internalPlayer.seekTo(60,true);
+  const timeHandler = (index) => {
+    playerRef.current.internalPlayer.seekTo(index,true); //ここに情報を渡して、
   };
 
   return (
@@ -75,10 +76,16 @@ const MyComponent = (props) => {
         // Your other props
         ref={playerRef} // This sets the ref above to be linked to the player now
       />
-      {/* Using a button to pause the video, for example */}
-      <button onClick={Jumpto60s}>Play at 60s</button>
+
+      <button onClick={() => {
+           setShowResults(!showResults)
+         }}>{showResults? "Show Full script":"Show target lines"}</button>
+      {showResults ? <h1>Phrases with {props.title}</h1>:<h1>FULLSUB</h1>}
+      {showResults ? <VirtualizedList targetSub={props.targetSub} time={timeHandler} />:
+      <VirtualizedList fullSub={props.fullSub} time={timeHandler}/>}
+
     </>
   );
 };
 
-export default MyComponent
+export default VideoPlayer
