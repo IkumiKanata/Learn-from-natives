@@ -5,4 +5,6 @@ export const CreateSubtitleForYoutube = (slug) => {
   const queryURL = `${SUBTITLE_FOR_YOUTUBE_QUERY}${process.env.NEXT_PUBLIC_API_KEY}`;
   const url = `${baseURL}${queryURL}`;
   return url;
-}
+};
+
+export const BESTAPI_TED = "https://bestapi-ted-v1.p.rapidapi.com/transcriptFreeText";
