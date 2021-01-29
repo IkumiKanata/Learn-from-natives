@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     height: 500,
     maxWidth: 500,
     backgroundColor: theme.palette.background.paper,
-    position: 'relative',
     overflow: 'auto',
   },
 }));
@@ -46,7 +45,6 @@ export default function VirtualizedList(props) { //親コンポーネントか�
 
 
   if(props.targetSub) { //もし、渡されてきたpropsがtargetなら、targetをレンダー
-    
     return (
       <div className={classes.root}> 
         <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.targetSub.length} itemData={{sub:props.targetSub, time:props.time}} >  
@@ -54,10 +52,7 @@ export default function VirtualizedList(props) { //親コンポーネントか�
         </FixedSizeList>
       </div>
     );
-  }
-
-  else if(props.fullSub) {
-    
+  }else if(props.fullSub) {
     return (
       <div className={classes.root}> 
         <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.fullSub.length} itemData={{sub:props.fullSub, time:props.time}}>  

@@ -10,6 +10,12 @@ import Link from "next/link";
 const useStyles = makeStyles({
   root: {
     maxWidth: 450,
+    background: "lightblue",
+    borderRadius: "5px",
+    boxShadow: "0 2px 5px ccc",
+    width: "calc(33.333% – 10px)",
+    margin:"0 15px 15px 0",
+
   },
   media: {
     height: 200,
@@ -25,19 +31,18 @@ export default function MediaCard(props) {
   const img = "http://img.youtube.com/vi/" + props.id + "/mqdefault.jpg";
 
     return (
+      <Link passHref
+       href="pages/[...slug]"
+       as={"/videoplayer/" + props.id + "/"  + props.inputWord}  
+      >
     <Card className={classes.root}>
       <CardActionArea>
-        <Link passHref
-         href="/post/[...slug]"
-         as={"/post/" + props.id + "/"  + props.inputWord}  
-        >
           
         <CardMedia
           className={classes.media}
           image={"http://img.youtube.com/vi/" + props.id + "/mqdefault.jpg"}
           title={props.title}
         />
-        </Link>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {props.title}
@@ -50,6 +55,7 @@ export default function MediaCard(props) {
       </CardActionArea>
       
     </Card>
+    </Link>
   );
 }
 

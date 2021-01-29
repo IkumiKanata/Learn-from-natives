@@ -4,14 +4,14 @@ import VirtualizedList from "../components/List";
 import axios from "axios";
 import Link from 'next/link';
 import VideoPlayer from "../components/YoutubePlayer";
-import PinnedSubheaderList from "../components/List2"
+import PinnedSubheaderList from "../components/List2";
+
 
 
 const Comment = () => {
   const router = useRouter()
   const slug = router.query.slug || []
   console.log(router.query.slug)
-  let time = 100
 
 const [data1, setData1] = useState({ hits:[] });
 const [data2, setData2] = useState({hit2:[]});
@@ -56,6 +56,9 @@ const [showResults, setShowResults] = useState(true)
       {/* <h1>Slug: {slug.join('/')}</h1> */}
 
       <VideoPlayer videoId={router.query.slug[1] } title={router.query.slug[2]} fullSub={data1} targetSub={data2} />
+
+
+
 
       
          {/* <button onClick={() => {

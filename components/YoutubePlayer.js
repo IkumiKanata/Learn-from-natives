@@ -71,11 +71,13 @@ const VideoPlayer = (props) => {
   return (
     <>
       {/* Rest of your component */}
+      <div class="frame-wrapper__video">
       <YouTube
         videoId={props.videoId}
         // Your other props
         ref={playerRef} // This sets the ref above to be linked to the player now
       />
+      </div>
 
       <button onClick={() => {
            setShowResults(!showResults)

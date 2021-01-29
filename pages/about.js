@@ -3,7 +3,7 @@ import Head from 'next/head'
 import axios from "axios";
 import React, {Component} from "react"; 
 import Link from 'next/link';
-import Card from "../components/Card";
+import MediaCard from "../components/Card";
 import VirtualizedList from "../components/List";
 
 export default class App extends Component {
@@ -27,7 +27,7 @@ export default class App extends Component {
     console.log(this.state.inputWord)//You will get value here
     axios.get('https://bestapi-ted-v1.p.rapidapi.com/transcriptFreeText',
     {params: {
-      size:3,
+      size:1,
       text: this.state.inputWord,
       "rapidapi-key": process.env.NEXT_PUBLIC_API_KEY
     } //put param with - in ""
@@ -101,7 +101,7 @@ export default class App extends Component {
         <>
           {this.state.videoIDs.map((ID, i) => {
             // console.log(this.state.subtitleDatas[i][i].text)
-            return <Card id={ID} title={this.state.videoTitles[i]} text={this.state.targetSubtitleLines[i]} inputWord={this.state.inputWord} key={i}></Card>
+            return <MediaCard id={ID} title={this.state.videoTitles[i]} text={this.state.targetSubtitleLines[i]} inputWord={this.state.inputWord} key={i} />
           })}
          </>
         )
@@ -109,11 +109,22 @@ export default class App extends Component {
 
       return (
           <>
+            <Head>
+              <title>video select</title>
+              <meta charSet="utf-8"></meta>
+            </Head>
               <form onSubmit = {this.fetchAPI}> {/* //refer your function using `this`. Need page transtion here as well */}
                   <input type = 'text' placeholder = 'happiness, in order to, put aside...' name="inputWord" value={this.state.inputWord} onChange={this.handleChange} ></input>
                   <input type='submit' placeholder='GO' value = 'GO'></input>
               </form>
+              <div style={{  padding: 2.5% 0,
+        display: "flex",
+        flexFlow: "row wrap",
+        justifyContent: "space-evenly"
+        }}>
               {cards}
+
+              </div>
 
               
               
