@@ -36,9 +36,7 @@ export default class App extends Component {
       videoTitles: videoTitleList,
     });
     console.log(videoIDList[1]); //stateにアクセスして値を取得できているので、上のsetstateは完了している
-    return  {
-      videoIDList, videoTitleList,
-    }
+    return  videoIDList;
   }
 
   getSubTitleDataList = async (videoIDList) => {
