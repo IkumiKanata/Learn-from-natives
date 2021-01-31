@@ -20,7 +20,7 @@ function RenderRow(props) {
   // console.log(props.Ref)
 
   const {data,index, style,} = props;
-  // console.log(props)
+  console.log(props)
 
 
 
@@ -41,26 +41,27 @@ RenderRow.propTypes = {
 
 export default function VirtualizedList(props) { //親コンポーネントからはここに
   const classes = useStyles();
-  console.log(props.time)
+  console.log(props.timeHandler)
 
 
-  if(props.targetSub) { //もし、渡されてきたpropsがtargetなら、targetをレンダー
+  // if(props.targetSub) { //もし、渡されてきたpropsがtargetなら、targetをレンダー
+
     return (
       <div className={classes.root}> 
-        <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.targetSub.length} itemData={{sub:props.targetSub, time:props.time}} >  
+        <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.sub.length} itemData={{sub:props.sub, time:props.timeHandler}} >  
       {RenderRow}
         </FixedSizeList>
       </div>
     );
-  }else if(props.fullSub) {
-    return (
-      <div className={classes.root}> 
-        <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.fullSub.length} itemData={{sub:props.fullSub, time:props.time}}>  
-      {RenderRow}
-        </FixedSizeList>
-      </div>
-    );
-  }
+  // }else if(props.fullSub) {
+  //   return (
+  //     <div className={classes.root}> 
+  //       <FixedSizeList height={400} width={400} itemSize={66} itemCount={200} itemCount={props.fullSub.length} itemData={{sub:props.fullSub, time:props.time}}>  
+  //     {RenderRow}
+  //       </FixedSizeList>
+  //     </div>
+  //   );
+  // }
 }
 
 
