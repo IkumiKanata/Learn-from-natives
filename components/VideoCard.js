@@ -10,7 +10,7 @@ import Link from "next/link";
 const useStyles = makeStyles({
   root: {
     maxWidth: 450,
-    background: "lightblue",
+    background: "green",
     borderRadius: "5px",
     boxShadow: "0 2px 5px ccc",
     width: "calc(33.333% – 10px)",
@@ -25,7 +25,17 @@ const useStyles = makeStyles({
 export default function MediaCard(props) {
   const classes = useStyles();
   
-
+  //特殊文字をデコード
+  const text = props.text[0].text
+  const strToDecode = text;
+  const parser = new DOMParser();
+  const decodedText = parser.parseFromString(`<!doctype html><body>${strToDecode}`, 'text/html').body.textContent; 
+ 
+  const title = props.title
+  const strToDecode2 = title;
+  const parser2 = new DOMParser();
+  const decodedTitle = parser.parseFromString(`<!doctype html><body>${strToDecode2}`, 'text/html').body.textContent;
+  console.log(decodedTitle);
 
 
   const img = "http://img.youtube.com/vi/" + props.id + "/mqdefault.jpg";
@@ -48,8 +58,7 @@ export default function MediaCard(props) {
             {props.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.text[0].text}    
-            {/* Thank youとか先頭が大文字になる奴は inputWordが全部小文字になるので、includeでtrueにならず、textの値がundefinedになる */}
+            {decodedText}    
           </Typography>
         </CardContent>
       </CardActionArea>

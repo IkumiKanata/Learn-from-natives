@@ -1,55 +1,75 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState,useEffect } from "react";
 import {FaBars, FaTimes} from "react-icons/fa"
+import { IconContext } from 'react-icons/lib';
 import Link from "next/link"
+
+
+
 import {
-  Nav, 
-  NavbarContainer, 
-  NavLogo, 
-  NavIcon, 
-  MobileIcon
-} from "./Navbar.elements"
+  Nav,
+  NavbarContainer,
+  NavLogo,
+  NavIcon,
+  MobileIcon,
+  NavMenu,
+  NavItem,
+  // NavItemBtn,
+  NavLinks,
+  // NavBtnLink
+
+} from "./Navbar.elements";
+import dynamic from 'next/dynamic'
+
+const DynamicComponent = dynamic(() => 
+  import('./DynamicImport'), {ssr:false});
 
 
 
 
-  const StyledLink = styled.a`
-    padding: 0rem 2rem;
-    color:green;
-    `;
+
+
 
 const Navbar = () => {
 const [click, setClick] = useState(false)
 
-const handleClick = () => setClick(!click)
+
+const handleClick = () => setClick(!click);
+const closeMobileMenu = () => setClick(false);
+
 
   return (
+    <>
+    <IconContext.Provider value={{ color: 'green' }}>
+
     <Nav>
       <NavbarContainer>
-      <div>
         <Link href="/" passHref>
-          <div>
-          <NavLogo>
+          <NavLogo onClick={closeMobileMenu}  >
             <NavIcon/>RealBuilder
+            
           </NavLogo>
-          <MobileIcon onClick={handleClick}>
-            {click ? <FaTimes/> : <FaBars/>}
-          </MobileIcon>
-
-          </div>
-          {/* <StyledLink>NXT</StyledLink> */}
         </Link>
-      </div>
-      <div>
-      <Link href="/" passHref>
-          <StyledLink>Home</StyledLink>
-        </Link> 
-      <Link href="/about" passHref>
-          <StyledLink>about</StyledLink>
-        </Link> 
-      </div>
+        <MobileIcon onClick={handleClick} >
+            {click ? <FaTimes />:<FaBars/>}
+        </MobileIcon>
+        <NavMenu onClick={handleClick} click={click}>
+            <NavItem>
+              <Link href="/" passHref>
+                <NavLinks >Home</NavLinks>
+              </Link> 
+            </NavItem>
+            <NavItem>
+              <Link href="/about" passHref>
+                <NavLinks onClick={closeMobileMenu}>about</NavLinks>
+              </Link> 
+            </NavItem>
+            <DynamicComponent />
+        </NavMenu>
       </NavbarContainer>
     </Nav>
+    </IconContext.Provider>
+    </>
+
   )
 }
 

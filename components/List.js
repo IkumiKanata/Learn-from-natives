@@ -21,13 +21,18 @@ function RenderRow(props) {
 
   const {data,index, style,} = props;
   console.log(props)
+  const text = data.sub[index].text
+  const strToDecode = text;
+  const parser = new DOMParser();
+  const decodedText = parser.parseFromString(`<!doctype html><body>${strToDecode}`, 'text/html').body.textContent;
+  console.log(decodedText);
 
 
 
   return (
     <ListItem button style={style} key={index} onClick={() => {props.data.time(data.sub[index].start)}}>
       <PlayCircleOutlineRoundedIcon/>
-      <ListItemText primary={data.sub[index].text}  />  
+      <ListItemText primary={decodedText}  />  
       {/* ここのListItemTextに受け取った別ファイルである親コンポーネントから受け取って、利用したい*/}
     </ListItem>
   );

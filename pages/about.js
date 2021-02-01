@@ -11,7 +11,7 @@ export default class App extends Component {
     inputWord: "",
     videoTitles: [],
     videoIDs: [], //holds youtubeID from tedAPI to use them in subtitleAPI and thumbnail
-    subtitleDatas: null, //place subtitles for 3 videos
+    subtitFleDatas: null, //place subtitles for 3 videos
     targetSubtitleLines: [], //
     dictionaryData: [],
     selectshow: false,
