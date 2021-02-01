@@ -1,9 +1,10 @@
 import Head from "next/head";
 import axios from "axios";
 import React, { Component } from "react";
-import { CreateSubtitleForYoutube, BESTAPI_TED } from "../constans/URLs";
+import { CreateSubtitleForYoutube, BESTAPI_TED } from "../constants/URLs";
 import CardList from "../components/VideoCardList";
 import DictionaryCard from "../components/dictionaryCard";
+import Navbar from "../components/Navbar/Navbar";
 
 export default class App extends Component {
   state = {
@@ -111,7 +112,6 @@ catch (e) {
     return (
       <>
         <form onSubmit={this.fetchAPI}>
-          {" "}
           {/* //refer your function using `this`. Need page transtion here as well */}
           <input
             type="text"
@@ -124,17 +124,18 @@ catch (e) {
         </form>
 
         <div
-          style={{
-            width: "80%",
-            margin: "0 auto",
+          // style={{
+          //   width: "80%",
+          //   margin: "0 auto",
 
             // // padding: 2.5 % 0,
             // // display: "flex",
             // // flexFlow: "row wrap",
             // justifyContent: "space-evenly",
-          }}
+          // }}
         > 
-        <DictionaryCard style={{marginBottom: "15px"}}
+        <DictionaryCard 
+        // style={{marginBottom: "15px"}}
         dictionaryData={dictionaryData}
         selectshow={selectshow}
         inputWord={inputWord}
@@ -144,12 +145,12 @@ catch (e) {
 
  
         <div
-          style={{
-            padding: 2.5 % 0,
-            display: "flex",
-            flexFlow: "row wrap",
-            justifyContent: "space-evenly",
-          }}
+          // style={{
+          //   padding: 2.5 % 0,
+          //   display: "flex",
+          //   flexFlow: "row wrap",
+          //   justifyContent: "space-evenly",
+          // }}
         >
           <CardList
             selectshow={selectshow}

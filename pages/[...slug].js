@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
 import VideoPlayer from "../components/YoutubePlayer";
-import { CreateSubtitleForYoutube } from "../constans/URLs";
+import { CreateSubtitleForYoutube } from "../constants/URLs";
 import VirtualizedList from "../components/List";
 
 
@@ -37,9 +37,7 @@ const Comment = () => {
 
   return (
     <>
-      <Link href="/about">
-        <a>back to search </a>
-      </Link>
+       
       <VideoPlayer
         videoId={videoId}
         title={title}

@@ -1,4 +1,3 @@
-
 export const SUBTITLE_FOR_YOUTUBE = "https://subtitles-for-youtube.p.rapidapi.com/subtitles/";
 export const SUBTITLE_FOR_YOUTUBE_QUERY = "?translated=None&type=None&lang=en&rapidapi-key=";
 export const CreateSubtitleForYoutube = (slug) => {
