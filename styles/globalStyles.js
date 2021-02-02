@@ -22,10 +22,10 @@ body {
   
   &:hover {
     text-decoration: underline;
-    color: red; */
+    color: red;
 }
 
-}
+    } */
 
 img {
   max-width: 100%;
@@ -54,7 +54,7 @@ background: ${({primary}) => (primary ? "#4b59f7": "#0467fb")};
 white-space: nowrap;
 padding: ${({big}) => (big? "12px 64px":"10px 20px" )};
 color:white;
-font-size: ${({fontBig}) => (fontBig? "20px": "60px")};
+font-size: ${({fontBig}) => (fontBig? "20px": "16px")};
 outline: none;
 border:none;
 cursor: pointer;

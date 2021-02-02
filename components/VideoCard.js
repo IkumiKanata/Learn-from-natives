@@ -25,17 +25,23 @@ const useStyles = makeStyles({
 export default function MediaCard(props) {
   const classes = useStyles();
   
-  //特殊文字をデコード
-  const text = props.text[0].text
-  const strToDecode = text;
+  //特殊文字をデコード in text
+  const strToDecode = props.text[0].text;
   const parser = new DOMParser();
   const decodedText = parser.parseFromString(`<!doctype html><body>${strToDecode}`, 'text/html').body.textContent; 
  
-  const title = props.title
-  const strToDecode2 = title;
-  const parser2 = new DOMParser();
-  const decodedTitle = parser.parseFromString(`<!doctype html><body>${strToDecode2}`, 'text/html').body.textContent;
-  console.log(decodedTitle);
+  //delete backslash
+  const replacedTitle = props.title.replace('\\', '')
+
+  //fix latin words
+  let fixedTitle;
+  try{
+      // If the string is UTF-8, this will work and not throw an error.
+      fixedTitle=decodeURIComponent(escape(replacedTitle));
+  }catch(e){
+      // If it isn't, an error will be thrown, and we can assume that we have an ISO string.
+      fixedTitle=decodedTitle;
+  }
 
 
   const img = "http://img.youtube.com/vi/" + props.id + "/mqdefault.jpg";
@@ -55,7 +61,7 @@ export default function MediaCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {props.title}
+            {fixedTitle}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {decodedText}    

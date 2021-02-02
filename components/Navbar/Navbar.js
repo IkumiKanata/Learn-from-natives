@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from "react";
 import {FaBars, FaTimes} from "react-icons/fa"
-import { IconContext } from 'react-icons/lib';
 import Link from "next/link"
 
 
@@ -21,7 +20,7 @@ import {
 import dynamic from 'next/dynamic'
 
 const DynamicComponent = dynamic(() => 
-  import('./DynamicImport'), {ssr:false});
+  import('./NoSSR'), {ssr:false});
 
 
 
@@ -38,8 +37,6 @@ const closeMobileMenu = () => setClick(false);
 
 
   return (
-    <>
-    <IconContext.Provider value={{ color: 'green' }}>
 
     <Nav>
       <NavbarContainer>
@@ -67,9 +64,6 @@ const closeMobileMenu = () => setClick(false);
         </NavMenu>
       </NavbarContainer>
     </Nav>
-    </IconContext.Provider>
-    </>
-
   )
 }
 

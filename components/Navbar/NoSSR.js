@@ -9,7 +9,7 @@ import {
 } from "./Navbar.elements";
 
 
-export default function HumbergerMenu() {
+export default function NavButton() {
   const [click, setClick] = useState(false)
   const [button, setButton] = useState(true)
   const closeMobileMenu = () => setClick(false);
