@@ -12,6 +12,7 @@ import {
   MobileIcon,
   NavMenu,
   NavItem,
+  NavText,
   // NavItemBtn,
   NavLinks,
   // NavBtnLink
@@ -42,7 +43,10 @@ const closeMobileMenu = () => setClick(false);
       <NavbarContainer>
         <Link href="/" passHref>
           <NavLogo onClick={closeMobileMenu}  >
-            <NavIcon/>RealBuilder
+            <NavIcon/>
+            <NavText>
+           Learn from Natives
+            </NavText>
             
           </NavLogo>
         </Link>
@@ -56,8 +60,8 @@ const closeMobileMenu = () => setClick(false);
               </Link> 
             </NavItem>
             <NavItem>
-              <Link href="/about" passHref>
-                <NavLinks onClick={closeMobileMenu}>about</NavLinks>
+              <Link href="/VideoSelect" passHref>
+                <NavLinks onClick={closeMobileMenu}>Video Search</NavLinks>
               </Link> 
             </NavItem>
             <DynamicComponent />

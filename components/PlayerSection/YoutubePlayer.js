@@ -1,5 +1,6 @@
 import React, { useRef,useState, useEffect } from "react";
 import YouTube from "react-youtube";
+import {VidepWrapper, YouTubePlayer} from "./YoutubePlayer.elements"
 
 const VideoPlayer = (props) => {
   // Initialises a 'ref' for the player
@@ -27,13 +28,14 @@ const VideoPlayer = (props) => {
   return (
     <>
       {/* Rest of your component */}
-      <div className="frame-wrapper__video">
-      <YouTube
-        videoId={props.videoId}
-        // Your other props
-        ref={playerRef} // This sets the ref above to be linked to the player now
-      />
-      </div>
+      <VidepWrapper>
+        <YouTubePlayer
+          videoId={props.videoId}
+          // Your other props
+          ref={playerRef} // This sets the ref above to be linked to the player now
+        />
+        
+      </VidepWrapper>
 
     </>
   );

@@ -13,7 +13,7 @@ import {
   Img
 } from "./InfoSection.elements"
 
- const InfoSection = ({
+ const SearchSection = ({
   primary,
   lightBg,
   imgStart,
@@ -56,4 +56,4 @@ import {
   )
 }
 
-export default InfoSection
+export default SearchSection

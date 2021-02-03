@@ -2,9 +2,11 @@ import Head from "next/head";
 import axios from "axios";
 import React, { Component } from "react";
 import { CreateSubtitleForYoutube, BESTAPI_TED } from "../constants/URLs";
-import CardList from "../components/VideoCardList";
-import DictionaryCard from "../components/dictionaryCard";
-import Navbar from "../components/Navbar/Navbar";
+import CardList from "../components/VideoSelectCards/VideoCardList";
+import DictionaryCard from "../components/VideoSelectCards/DictionaryCard";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+
 
 export default class App extends Component {
   state = {
@@ -15,6 +17,7 @@ export default class App extends Component {
     targetSubtitleLines: [], //
     dictionaryData: [],
     selectshow: false,
+    loading: false,
   };
 
   handleChange = (e) => {
@@ -24,7 +27,7 @@ export default class App extends Component {
   getVideoIds = async (inputWord) => {
     const params = {
       params: {
-        size: 5,
+        size: 2,
         text: inputWord,
         "rapidapi-key": process.env.NEXT_PUBLIC_API_KEY,
       },
@@ -84,19 +87,26 @@ catch (e) {
   fetchAPI = async (e) => {
     const { inputWord } = this.state;
     e.preventDefault();
-    const videoIDList = await this.getVideoIds(inputWord);
-    const dictionaryData = await this.getDictionaryData(inputWord);
-    const subtitleDataList = await this.getSubTitleDataList(videoIDList);
-    let subtitleWord = [];
-    for (let i = 0; i < subtitleDataList.length; i++) {
-      subtitleWord.push(
-        subtitleDataList[i].filter((element) => {
-          return element.text.toLowerCase().includes(inputWord) === true;
-        })
-      );
+    this.setState({loading:true})
+    try {
+      
+      const videoIDList = await this.getVideoIds(inputWord);
+      const dictionaryData = await this.getDictionaryData(inputWord);
+      const subtitleDataList = await this.getSubTitleDataList(videoIDList);
+      let subtitleWord = [];
+      for (let i = 0; i < subtitleDataList.length; i++) {
+        subtitleWord.push(
+          subtitleDataList[i].filter((element) => {
+            return element.text.toLowerCase().includes(inputWord) === true;
+          })
+        );
+      }
+      this.setState({ targetSubtitleLines: subtitleWord });
+      this.setState({ selectshow: true });
+  } catch (error) {
+    console.log("error", error)
     }
-    this.setState({ targetSubtitleLines: subtitleWord });
-    this.setState({ selectshow: true });
+    this.setState({loading:false})
   };
 
   render() {
@@ -122,36 +132,19 @@ catch (e) {
           ></input>
           <input type="submit" placeholder="GO" value="GO"></input>
         </form>
-
-        <div
-          // style={{
-          //   width: "80%",
-          //   margin: "0 auto",
-
-            // // padding: 2.5 % 0,
-            // // display: "flex",
-            // // flexFlow: "row wrap",
-            // justifyContent: "space-evenly",
-          // }}
-        > 
+ 
+      
+      
+         { this.state.loading ? <CircularProgress />:
+        <>
         <DictionaryCard 
         // style={{marginBottom: "15px"}}
         dictionaryData={dictionaryData}
         selectshow={selectshow}
         inputWord={inputWord}
          />
-        </div>
         <br />
 
- 
-        <div
-          // style={{
-          //   padding: 2.5 % 0,
-          //   display: "flex",
-          //   flexFlow: "row wrap",
-          //   justifyContent: "space-evenly",
-          // }}
-        >
           <CardList
             selectshow={selectshow}
             videoIDs={videoIDs}
@@ -159,7 +152,7 @@ catch (e) {
             targetSubtitleLines={targetSubtitleLines}
             inputWord={inputWord}
           />
-        </div>
+          </>}
       </>
     );
   }

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Link from "next/link";
-import { Button } from '../../styles/globalStyles';
+import { Button } from '../../globalStyles';
 
 
 import {

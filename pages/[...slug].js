@@ -2,9 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
-import VideoPlayer from "../components/YoutubePlayer";
+import VideoPlayer from "../components/PlayerSection/YoutubePlayer";
 import { CreateSubtitleForYoutube } from "../constants/URLs";
-import VirtualizedList from "../components/List";
+import VirtualizedList from "../components/PlayerSection/SubtitleScrollableList";
+import styled from "styled-components"
+
+const Wrapper = styled.div`
+
+@media screen and (min-width: 1025px) {
+  display:flex;
+}
+`
 
 
 const Comment = () => {
@@ -37,7 +45,10 @@ const Comment = () => {
 
   return (
     <>
-       
+       <button onClick={() => {
+        setShowResults(!showResults)
+      }}>{showResults? "Show Full script":"Show target lines"}</button>
+       <Wrapper>
       <VideoPlayer
         videoId={videoId}
         title={title}
@@ -45,15 +56,12 @@ const Comment = () => {
         targetSub={data2}
         time={playerTime}
       />
-
-          <button onClick={() => {
-           setShowResults(!showResults)
-         }}>{showResults? "Show Full script":"Show target lines"}</button>
-      {showResults ? <h1>PHRASES WITH {title}</h1>:<h1>FULLSUB</h1>}
+      {/* {showResults ? <h1>PHRASES WITH {title}</h1>:<h1>FULLSUB</h1>} */}
       {showResults ? <VirtualizedList sub={data2} timeHandler={(index) => {
         setPlayerTime(index)}} />:
       <VirtualizedList sub={data1} timeHandler={(index) => {
         setPlayerTime(index)}} />}
+       </Wrapper>
     </>
   );
 };

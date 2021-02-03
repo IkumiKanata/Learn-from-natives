@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {Container} from "../../styles/globalStyles"
+import {Container} from "../../globalStyles"
 import {FaMagento} from "react-icons/fa"
 
 export const Nav = styled.nav`
@@ -35,6 +35,13 @@ align-items:center;
 
 export const NavIcon =  styled(FaMagento)`
 margin-right: 0.5rem;
+`;
+
+export const NavText = styled.p`
+
+@media screen and (max-width: 405px) {
+  font-size: 20px;
+}
 `;
 
 export const MobileIcon =styled.div`
