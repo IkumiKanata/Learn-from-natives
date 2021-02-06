@@ -8,9 +8,12 @@ import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 const useStyles = makeStyles({
   root: {
 
-    maxWidth:"100%",
-    background: "green",
+    // maxWidth:"100%",
+    margin: "0 auto",
+    width: "70%",
+    background: "",
      textAlign: "center"
+
   },
   pointerNone: {
     pointerEvents: "none"
@@ -18,7 +21,7 @@ const useStyles = makeStyles({
 
 
   title: {
-    fontSize: 14,
+    fontSize: 20,
     
   },
   pos: {

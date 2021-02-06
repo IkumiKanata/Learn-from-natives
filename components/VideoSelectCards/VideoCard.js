@@ -10,11 +10,18 @@ import Link from "next/link";
 const useStyles = makeStyles({
   root: {
     maxWidth: 450,
-    background: "green",
+    background: "#6495ed",
     borderRadius: "5px",
     boxShadow: "0 2px 5px ccc",
     width: "calc(33.333% – 10px)",
     margin:"0 15px 15px 0",
+    ransition: "1s",
+
+
+    '&:hover': {
+      transform: "scale(1.05, 1.05) " ,
+      background:"#4b59f7"
+    },
 
   },
   media: {

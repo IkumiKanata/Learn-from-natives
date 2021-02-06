@@ -13,11 +13,9 @@ const Footer = () => {
     <FooterContainer>
       <FooterSubscription>
         <FooterSubHeading>
-          Join our exclusive membership to receive the latest news and trends
         </FooterSubHeading>
         <FooterSubText>
-        You can unsubscribe at any time
-      <p>Next 2021 ALL Rights Reserved</p>
+      <p>Learn from Natives 2021 ALL Rights Reserved</p>
         </FooterSubText>
       </FooterSubscription>
     </FooterContainer>

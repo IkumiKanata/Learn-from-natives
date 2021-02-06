@@ -13,10 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head> */}
       <InfoSection {...homeObjOne}></InfoSection>
-      <InfoSection {...homeObjTwo}></InfoSection>
       <InfoSection {...homeObjThree}></InfoSection>
-      <InfoSection {...homeObjFour}></InfoSection>
-
 
     </>
   )

@@ -6,13 +6,12 @@ export const homeObjOne = {
   lightTopLine: true,
   lightText: true,
   lightTextDesc: true,
-  topLine: 'Marketing Agency',
-  headline: 'Lead Generation Specialist for Online Businesses',
-  description:
-    'We help business owners increase their revenue. Our team of unique specialist can help you achieve your business goals.',
-  buttonLabel: 'Get Started',
+  topLine: '使い方は好きな英単語を検索するだけ！',
+  headline: 'Learn from Nativesで英語の本当の使い方を学ぼう',
+  description:'Learn from Nativesは学びたい英単語を英語話者が実際の文脈でどんな時に、どんな単語と一緒に使われているか知ることができる動画学習サイトです。',
+  buttonLabel: '単語検索',
   imgStart: '',
-  img: "images/undraw_education_f8ru.png",
+  img: "images/austin-distel-wD1LRb9OeEo-unsplash.jpg",
   alt: 'Credit Card',
   start: ''
 };
@@ -23,8 +22,8 @@ export const homeObjTwo = {
   lightTopLine: true,
   lightText: true,
   lightTextDesc: true,
-  topLine: 'Instant Setup',
-  headline: 'Extremely quick onboarding process',
+  topLine: '学校で学んだのに話せない？',
+  headline: '',
   description:
     "Once you've joined, our team of specialist will reach out to you and get you set up in minutes.",
   buttonLabel: 'Learn More',
@@ -40,14 +39,14 @@ export const homeObjThree = {
   lightTopLine: false,
   lightText: false,
   lightTextDesc: false,
-  topLine: 'Sarah Jeni',
+  topLine: '利用者の声：斎藤さおりさん',
   headline:
-    'Ultra helped me increase my revenue by over 3X in less than 3 months!',
+    '外国人の同僚との会話が楽しくなりました！',
   description:
-    "Their team is wonderful! I can't believe I didn't start working with them earlier.",
+    "学生時代に学んだはずの英語が同僚に伝わらず悩んでいましたが、Learn from Nativesのおかげで正しい発音と英語の使い方を学び、毎日が楽しいです",
   buttonLabel: 'View Case Study',
   imgStart: 'start',
-  // img: require('../../images/profile.jpg'),
+  img: "images/raychan-mNSOLgnDGzA-unsplash.jpg",
   alt: 'Vault',
   start: 'true'
 };

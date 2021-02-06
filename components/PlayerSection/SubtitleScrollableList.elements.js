@@ -9,7 +9,9 @@ position: relative;
   height: 0;
   padding-bottom: 56.25%;
   overflow: hidden;
+  margin-top: 20px;
   margin-bottom: 50px;
+  
 `;
 
 export const ListPlayer = styled(FixedSizeList)`
@@ -18,6 +20,7 @@ export const ListPlayer = styled(FixedSizeList)`
   position: absolute;
   top: 0;
   left: 0;
+  
 /* 
   @media screen and (min-width: 1025px) {
     width:50%

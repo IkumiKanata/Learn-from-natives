@@ -5,7 +5,7 @@ import {FaMagento} from "react-icons/fa"
 export const Nav = styled.nav`
 height:80px;
 background: #101522;
-color: green;
+color: #fff;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -24,7 +24,7 @@ ${Container} //other stuff imported from container
 `;
 
 export const NavLogo = styled.a`
-color: green;
+color: #fff;
 justify-self:flex-start;
 cursor:pointer;
 text-decoration: none;
@@ -110,7 +110,7 @@ export const NavItemBtn = styled.li`
 `;
 
 export const NavLinks = styled.a`
-color: green;
+color: #fff;
 display: flex;
 align-items:center;
 text-decoration:none;

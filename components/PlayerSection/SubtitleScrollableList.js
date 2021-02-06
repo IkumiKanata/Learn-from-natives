@@ -7,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { FixedSizeList } from 'react-window';
 import {ListWrapper, ListPlayer} from "./SubtitleScrollableList.elements"
 import { YouTubePlayer } from "./YoutubePlayer.elements";
+import { Button } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +51,12 @@ export default function VirtualizedList(props) { //親コンポーネントか�
 
     return (
       <ListWrapper>
-        <ListPlayer itemCount={props.sub.length} itemSize={66} itemData={{sub:props.sub, time:props.timeHandler}} height={300} > 
+        <h1>SUBTITLE</h1>
+        {/* button here */}
+        <button onClick={props.subtitleHandler
+      }>{props.showSubtitle? "Show Full script":"Show target lines"}</button>
+       
+        <ListPlayer itemCount={props.sub.length} itemSize={66} itemData={{sub:props.sub, time:props.timeHandler}} height={600} > 
         {RenderRow} 
         </ListPlayer>
       </ListWrapper>

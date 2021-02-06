@@ -8,10 +8,10 @@ const CardList = (props) => {
   } = props;
   if (!selectshow) return null;
   return (
-    <>
+    <div style={{display:"flex", flexWrap:"wrap", justifyContent:"center" }}>
       {videoIDs.map((ID, i) => {
         return (
-          <MediaCard
+          <MediaCard style={{width:"100%"}}
             id={ID}
             title={videoTitles[i]}
             text={targetSubtitleLines[i]}
@@ -20,7 +20,7 @@ const CardList = (props) => {
           />
         );
       })}
-    </>
+    </div>
   );;
 }
 

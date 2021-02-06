@@ -5,7 +5,8 @@ import { CreateSubtitleForYoutube, BESTAPI_TED } from "../constants/URLs";
 import CardList from "../components/VideoSelectCards/VideoCardList";
 import DictionaryCard from "../components/VideoSelectCards/DictionaryCard";
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import { Container, Button } from "../globalStyles"
+import SearchBar from "../components/SearchSection/SearchSection"
 
 
 export default class App extends Component {
@@ -27,7 +28,7 @@ export default class App extends Component {
   getVideoIds = async (inputWord) => {
     const params = {
       params: {
-        size: 2,
+        size: 5,
         text: inputWord,
         "rapidapi-key": process.env.NEXT_PUBLIC_API_KEY,
       },
@@ -76,7 +77,6 @@ export default class App extends Component {
     })
 }
 catch (e) {
-    // monthName="unknown"
     console.log("error") // 例外オブジェクトをエラー処理部分に渡す
     this.setState({
       dictionaryData: null
@@ -87,6 +87,10 @@ catch (e) {
   fetchAPI = async (e) => {
     const { inputWord } = this.state;
     e.preventDefault();
+    if(!this.state.inputWord) {
+      return null; 
+    } //検索バーが空欄の時、関数を動かさない
+
     this.setState({loading:true})
     try {
       
@@ -120,40 +124,35 @@ catch (e) {
 
     } = this.state;
     return (
-      <>
-        <form onSubmit={this.fetchAPI}>
-          {/* //refer your function using `this`. Need page transtion here as well */}
-          <input
-            type="text"
-            placeholder="happiness, in order to, put aside..."
-            name="inputWord"
-            value={inputWord}
-            onChange={this.handleChange}
-          ></input>
-          <input type="submit" placeholder="GO" value="GO"></input>
-        </form>
- 
+
+      <div style={{background:"#101522"}}>  
+      <Container >
+        <div style={{minHeight:"70vh", display:"flex", flexDirection:"column"}}>
+    
+        <h1 style={{ textAlign:"center", color:"white"}}>単語を検索</h1>
+        <SearchBar inputWord={this.state.inputWord} fetchAPI={this.fetchAPI} handleChange={this.handleChange} />
       
-      
-         { this.state.loading ? <CircularProgress />:
+         { this.state.loading ? <CircularProgress style={{margin: "0 auto"}} />:
         <>
         <DictionaryCard 
-        // style={{marginBottom: "15px"}}
         dictionaryData={dictionaryData}
         selectshow={selectshow}
         inputWord={inputWord}
-         />
+        />
         <br />
-
           <CardList
             selectshow={selectshow}
             videoIDs={videoIDs}
             videoTitles={videoTitles}
             targetSubtitleLines={targetSubtitleLines}
             inputWord={inputWord}
-          />
+            />
           </>}
-      </>
+        </div>
+          </Container>
+
+      </div>
+
     );
   }
 }
