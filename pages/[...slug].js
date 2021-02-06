@@ -54,6 +54,7 @@ const Comment = () => {
   return (
 
     <Container>
+      <Link href={{ pathname: '/VideoSelect', query: { keyword: title  } }}><a>path</a></Link>
        {/* <button onClick={() => {
         setShowSubtitle(!showSubtitle)
       }}>{showSubtitle? "Show Full script":"Show target lines"}</button> */}
