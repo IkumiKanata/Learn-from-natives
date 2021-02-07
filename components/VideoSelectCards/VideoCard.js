@@ -55,9 +55,7 @@ export default function MediaCard(props) {
 
     return (
       <Link passHref
-       href="pages/[...slug]"
-       as={"/videoplayer/" + props.id + "/"  + props.inputWord}  
-      >
+       href={{ pathname: '/VideoPlayer', query: { id: props.id, inputWord:props.inputWord  } }} >
     <Card className={classes.root}>
       <CardActionArea>
           

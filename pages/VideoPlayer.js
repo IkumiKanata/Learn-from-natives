@@ -28,8 +28,11 @@ const Comment = () => {
 
 
 
-  const videoId = router.query.slug[1];
-  const title = router.query.slug[2];
+  const videoId = router.query.id;
+  const title = router.query.inputWord;
+  if(!router.query.inputWord) {
+    return <h1 style={{margin:"0 auto"}}>No data received, go back to video select page</h1>
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +54,7 @@ const Comment = () => {
     setShowSubtitle(!showSubtitle)
   }
 
-  return (
+    return (
 
     <Container>
       <Link href={{ pathname: '/VideoSelect', query: { keyword: title  } }}><a>path</a></Link>
@@ -75,6 +78,8 @@ const Comment = () => {
     </Container>
 
   );
+     
+      
 };
 
 export default Comment;
