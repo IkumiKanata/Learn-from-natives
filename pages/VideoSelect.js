@@ -139,20 +139,14 @@ catch (e) {
   };   
     useEffect(() => {
      if (router.query.keyword) {
-      console.log(router.query.keyword);
-      const f = async () => {
-        
+       console.log(router.query.keyword);        
               const keyword =  router.query.keyword;
               console.log(keyword)
-
-              const unko = await setInputWord(prev => {
-                return keyword});
+          setInputWord(keyword);
                 console.log(inputWord) //setInputWordが完了していない
-              await backToSelect(); //ここが上の処理が終わってから走るようにしたい
+             backToSelect(); //ここが上の処理が終わってから走るようにしたい
         
       };
-      f();
-    }
     }, [router.query.keyword]);
 
   // useEffect(() => {

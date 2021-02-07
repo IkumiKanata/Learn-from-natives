@@ -1,5 +1,3 @@
-import axios from "axios"
-
 export const homeObjOne = {
   pprimary: true,
   lightBg: false,
@@ -67,3 +65,4 @@ export const homeObjFour = {
   alt: 'Vault',
   start: 'true'
 };
+
