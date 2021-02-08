@@ -58,15 +58,15 @@ const Comment = () => {
   }
 
     return (
-  <>
+      <>
       <Head>
         <title>Learn From Natives | VidepPlayer</title>
         <link rel="icon" href="/favicon.ico" />  
       </Head>
       <div style={{background:"#101522"}}>
 
-      <Container>
-        <Link passHref href={{ pathname: '/VideoSelect', query: { keyword: title  } }}>
+    <Container>
+      <Link passHref href={{ pathname: '/VideoSelect', query: { keyword: title  } }}>
         <BackToSearch >
           
         <ArrowBackIcon> 
@@ -92,7 +92,7 @@ const Comment = () => {
        </Wrapper>
     </Container>
    </div>
-  </>
+      </>
   );
      
       

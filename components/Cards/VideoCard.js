@@ -51,7 +51,7 @@ export default function MediaCard(props) {
   }
 
 
-  const img = "http://img.youtube.com/vi/" + props.id + "/mqdefault.jpg";
+  const img = "https://img.youtube.com/vi/" + props.id + "/mqdefault.jpg";
 
     return (
       <Link passHref
@@ -61,7 +61,7 @@ export default function MediaCard(props) {
           
         <CardMedia
           className={classes.media}
-          image={"http://img.youtube.com/vi/" + props.id + "/mqdefault.jpg"}
+          image={img}
           title={props.title}
         />
         <CardContent>
