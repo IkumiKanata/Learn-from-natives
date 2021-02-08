@@ -1,5 +1,5 @@
 import react from "react"
-import { Form, Input, Button } from "./SearchSection.elements"
+import { Form, Input, Button } from "./SearchBar.elements"
 
 
 export default function SearchBar (props) {

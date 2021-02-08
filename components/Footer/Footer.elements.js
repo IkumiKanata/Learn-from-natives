@@ -22,6 +22,7 @@ export const FooterSubscription = styled.section`
   margin-bottom: 24px;
   padding: 24px;
   color: #fff;
+
 `;
 
 export const FooterSubHeading = styled.p`

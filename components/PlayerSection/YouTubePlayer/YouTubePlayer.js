@@ -1,6 +1,6 @@
 import React, { useRef,useState, useEffect } from "react";
 import YouTube from "react-youtube";
-import {VidepWrapper, YouTubePlayer} from "./YoutubePlayer.elements"
+import {VidepWrapper, YouTubePlayer} from "./YouTubePlayer.elements"
 
 const VideoPlayer = (props) => {
   // Initialises a 'ref' for the player

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
-import VideoPlayer from "../components/PlayerSection/YoutubePlayer";
+import VideoPlayer from "../components/PlayerSection/YouTubePlayer/YouTubePlayer";
 import { CreateSubtitleForYoutube } from "../constants/URLs";
-import VirtualizedList from "../components/PlayerSection/SubtitleScrollableList";
+import VirtualizedList from "../components/PlayerSection/ScrollList/SubtitleScrollableList";
 import styled from "styled-components"
 import { Container } from "../globalStyles"
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { BackToSearch } from "../components/PlayerSection/BackToSearch.elements";
 
 const Wrapper = styled.div`
 
@@ -55,12 +57,20 @@ const Comment = () => {
   }
 
     return (
+      <div style={{background:"#101522"}}>
 
     <Container>
-      <Link href={{ pathname: '/VideoSelect', query: { keyword: title  } }}><a>path</a></Link>
-       {/* <button onClick={() => {
-        setShowSubtitle(!showSubtitle)
-      }}>{showSubtitle? "Show Full script":"Show target lines"}</button> */}
+      <Link passHref href={{ pathname: '/VideoSelect', query: { keyword: title  } }}>
+        <BackToSearch >
+          
+        <ArrowBackIcon> 
+
+        </ArrowBackIcon>
+          検索結果に戻る:  {title} 
+        
+        </BackToSearch>
+      
+      </Link>
        <Wrapper>
       <VideoPlayer
         videoId={videoId}
@@ -68,15 +78,15 @@ const Comment = () => {
         fullSub={data1}
         targetSub={data2}   
         time={playerTime}
-      />
-      {/* {showResults ? <h1>PHRASES WITH {title}</h1>:<h1>FULLSUB</h1>} */}
+        />
       {showSubtitle ? <VirtualizedList sub={data2} timeHandler={(index) => {
         setPlayerTime(index)}} subtitleHandler={subtitleHandler} showSubtitle={showSubtitle} />:
-      <VirtualizedList  sub={data1} timeHandler={(index) => {
-        setPlayerTime(index)}}  subtitleHandler={subtitleHandler} showSubtitle={showSubtitle}/>}
+        <VirtualizedList  sub={data1} timeHandler={(index) => {
+          setPlayerTime(index)}}  subtitleHandler={subtitleHandler} showSubtitle={showSubtitle}/>}
        </Wrapper>
     </Container>
 
+          </div>
   );
      
       

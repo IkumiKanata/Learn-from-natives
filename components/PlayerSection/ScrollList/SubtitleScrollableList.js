@@ -5,8 +5,8 @@ import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRo
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { FixedSizeList } from 'react-window';
-import {ListWrapper, ListPlayer} from "./SubtitleScrollableList.elements"
-import { YouTubePlayer } from "./YoutubePlayer.elements";
+import {ListWrapper, ListPlayer, List, ListText, SubtitleButton, SubtitileSectionWrapper, SubtitileSectionText} from "./SubtitleScrollableList.elements"
+import { YouTubePlayer } from "../YouTubePlayer/YouTubePlayer.elements";
 import { Button } from "@material-ui/core";
 
 
@@ -28,11 +28,11 @@ function RenderRow(props) {
   const decodedText = parser.parseFromString(`<!doctype html><body>${strToDecode}`, 'text/html').body.textContent;
 
   return (
-    <ListItem button style={style} key={index} onClick={() => {props.data.time(data.sub[index].start)}}>
+    <List button style={style} key={index} onClick={() => {props.data.time(data.sub[index].start)}}>
       <PlayCircleOutlineRoundedIcon/>
-      <ListItemText primary={decodedText}  />  
+      <ListText	primary={decodedText}  />  
       {/* ここのListItemTextに受け取った別ファイルである親コンポーネントから受け取って、利用したい*/}
-    </ListItem>
+    </List>
   );
 }
 
@@ -51,12 +51,15 @@ export default function VirtualizedList(props) { //親コンポーネントか�
 
     return (
       <ListWrapper>
-        <h1>SUBTITLE</h1>
-        {/* button here */}
-        <button onClick={props.subtitleHandler
-      }>{props.showSubtitle? "Show Full script":"Show target lines"}</button>
+        <SubtitileSectionWrapper>
+        <SubtitileSectionText style={{fontSize:"20px", display:"flex",
+}}>Subtitle section</SubtitileSectionText>
+        <SubtitleButton onClick={props.subtitleHandler
+      }>{props.showSubtitle? "Show Full script":"Show target lines"}</SubtitleButton>
+
+        </SubtitileSectionWrapper>
        
-        <ListPlayer itemCount={props.sub.length} itemSize={66} itemData={{sub:props.sub, time:props.timeHandler}} height={600} > 
+        <ListPlayer itemCount={props.sub.length} itemSize={66} itemData={{sub:props.sub, time:props.timeHandler}} height={550} > 
         {RenderRow} 
         </ListPlayer>
       </ListWrapper>
