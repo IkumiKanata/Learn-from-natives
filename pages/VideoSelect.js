@@ -148,6 +148,12 @@ catch (e) {
 
     return (
 
+    <>
+      <Head>
+        <title>Learn From Natives | VideoSelect</title>
+        <link rel="icon" href="/favicon.ico" />  
+      </Head>
+
       <div style={{background:"#101522"}}>  
       <Container >
         <div style={{minHeight:"70vh", display:"flex", flexDirection:"column"}}>
@@ -174,8 +180,8 @@ catch (e) {
           </>}
         </div>
           </Container>
-
       </div>
+     </>
 
     );
   

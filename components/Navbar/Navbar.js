@@ -64,7 +64,7 @@ const closeMobileMenu = () => setClick(false);
                 <NavLinks onClick={closeMobileMenu}>Video Search</NavLinks>
               </Link> 
             </NavItem>
-            <DynamicComponent />
+            {/* <DynamicComponent /> */}
         </NavMenu>
       </NavbarContainer>
     </Nav>

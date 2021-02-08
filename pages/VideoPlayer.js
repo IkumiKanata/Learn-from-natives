@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from 'next/head'
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
@@ -57,6 +58,11 @@ const Comment = () => {
   }
 
     return (
+      <>
+      <Head>
+        <title>Learn From Natives | VidepPlayer</title>
+        <link rel="icon" href="/favicon.ico" />  
+      </Head>
       <div style={{background:"#101522"}}>
 
     <Container>
@@ -87,6 +93,7 @@ const Comment = () => {
     </Container>
 
           </div>
+          </>
   );
      
       

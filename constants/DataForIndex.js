@@ -42,7 +42,7 @@ export const homeObjThree = {
     '外国人の同僚との会話が楽しくなりました！',
   description:
     "学生時代に学んだはずの英語が同僚に伝わらず悩んでいましたが、Learn from Nativesのおかげで正しい発音と英語の使い方を学び、毎日が楽しいです",
-  buttonLabel: 'View Case Study',
+  buttonLabel: '使ってみる',
   imgStart: 'start',
   img: "images/raychan-mNSOLgnDGzA-unsplash.jpg",
   alt: 'Vault',

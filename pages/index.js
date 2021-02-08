@@ -8,11 +8,11 @@ export default function Home() {
 
   return (
     <>
-{/* 
+
       <Head>
-        <title>Create Next App</title>
+        <title>Learn From Natives</title>
         <link rel="icon" href="/favicon.ico" />  
-      </Head> */}
+      </Head>
       <InfoSection {...homeObjOne}></InfoSection>
       <InfoSection {...homeObjThree}></InfoSection>
 

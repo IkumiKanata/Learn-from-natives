@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import {Container} from "../../globalStyles"
-import {FaMagento} from "react-icons/fa"
+import { GiFluffySwirl } from "react-icons/gi";
 
 export const Nav = styled.nav`
 height:80px;
@@ -14,6 +14,8 @@ position: sticky;
 top:0;
 z-index: 999;
 `;
+
+
 
 export const NavbarContainer = styled(Container)`
 display: flex;
@@ -33,7 +35,7 @@ display:flex;
 align-items:center;
 `;
 
-export const NavIcon =  styled(FaMagento)`
+export const NavIcon =  styled(GiFluffySwirl)`
 margin-right: 0.5rem;
 `;
 
