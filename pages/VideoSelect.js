@@ -25,7 +25,6 @@ export default function App(props) {
   const [loading,setLoading] = useState(false);
 
 
-console.log(router.query.keyword)
 
 
   const handleChange = (e) => {
@@ -45,7 +44,6 @@ console.log(router.query.keyword)
     setVideoIDs(videoIDList);
     const videoTitleList = res.data.map((element) => element.name);
     setVideoTitles(videoTitleList);
-    console.log(videoIDList[1]); //stateにアクセスして値を取得できているので、上のsetstateは完了している
     return  videoIDList;
   }
 
@@ -72,7 +70,6 @@ console.log(router.query.keyword)
 // テストする文
     // monthName=getMonthName(myMonth) // 関数は例外を投げることがある
     const res = await axios.get("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + inputWord); 
-    console.log(res.data[0])
     setDictionaryData(res.data)
 }
 catch (e) {
@@ -137,8 +134,7 @@ catch (e) {
 
   useEffect(() => {
       if (router.query.keyword) {
-        backToSelect(); //ここが上の処理が終わってから走るようにしたい
-        console.log(inputWord) //setInputWordが完了していない
+        backToSelect(); 
          };
   },[router.query.keyword])
   

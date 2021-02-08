@@ -1,8 +1,7 @@
 import styled from "styled-components"
 
 export const Form = styled.form`
-    /* margin: 0 auto; */
-    text-align: center;
+     text-align: center;
     border-radius:4px;
     font: bold 16px sans-serif;
      max-width: 100%;

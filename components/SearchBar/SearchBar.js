@@ -1,9 +1,7 @@
-import react from "react"
 import { Form, Input, Button } from "./SearchBar.elements"
 
 
 export default function SearchBar (props) {
-
 
   return (
     <Form onSubmit={props.fetchAPI}>
@@ -12,6 +10,5 @@ export default function SearchBar (props) {
       <Button type="submit">GO</Button>
     </Form>
   )
-
 }
 

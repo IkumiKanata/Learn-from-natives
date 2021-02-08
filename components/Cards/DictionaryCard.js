@@ -3,12 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
 const useStyles = makeStyles({
   root: {
 
-    // maxWidth:"100%",
     margin: "0 auto",
     width: "70%",
     background: "",
@@ -68,7 +66,7 @@ export default function DictionaryCard(props) {
         <br />
 
         <div>
-            Learn more with:<span>&ensp;</span>        <br />
+            Learn more with:<span>&ensp;</span><br />
 
 
           <a href={"https://www.thefreedictionary.com/" + props.dictionaryData[0].word} target="_blank" rel="noopener noreferrer">EN-EN DICT</a>  

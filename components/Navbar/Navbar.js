@@ -13,9 +13,7 @@ import {
   NavMenu,
   NavItem,
   NavText,
-  // NavItemBtn,
   NavLinks,
-  // NavBtnLink
 
 } from "./Navbar.elements";
 import dynamic from 'next/dynamic'

@@ -8,14 +8,12 @@ export default function Home() {
 
   return (
     <>
-
       <Head>
         <title>Learn From Natives</title>
         <link rel="icon" href="/favicon.ico" />  
       </Head>
       <InfoSection {...homeObjOne}></InfoSection>
       <InfoSection {...homeObjThree}></InfoSection>
-
     </>    
   )
 }  

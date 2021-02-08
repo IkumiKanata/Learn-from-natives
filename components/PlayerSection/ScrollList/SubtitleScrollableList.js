@@ -1,24 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { FixedSizeList } from 'react-window';
-import {ListWrapper, ListPlayer, List, ListText, SubtitleButton, SubtitileSectionWrapper, SubtitileSectionText} from "./SubtitleScrollableList.elements"
-import { YouTubePlayer } from "../YouTubePlayer/YouTubePlayer.elements";
-import { Button } from "@material-ui/core";
-
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    height: 500,
-    backgroundColor: theme.palette.background.paper,
-    overflow: 'auto',
-    
-  },
-}));
+import {
+  ListWrapper, 
+  ListPlayer, List, 
+  ListText, 
+  SubtitleButton, 
+  SubtitileSectionWrapper, 
+  SubtitileSectionText
+} from "./SubtitleScrollableList.elements"
 
 function RenderRow(props) { 
   const {data,index, style,} = props;
@@ -31,7 +21,6 @@ function RenderRow(props) {
     <List button style={style} key={index} onClick={() => {props.data.time(data.sub[index].start)}}>
       <PlayCircleOutlineRoundedIcon/>
       <ListText	primary={decodedText}  />  
-      {/* ここのListItemTextに受け取った別ファイルである親コンポーネントから受け取って、利用したい*/}
     </List>
   );
 }
@@ -42,12 +31,7 @@ RenderRow.propTypes = {
   
 };
 
-export default function VirtualizedList(props) { //親コンポーネントからはここに
-  const classes = useStyles();
-  console.log(props.timeHandler)
-
-
-  // if(props.targetSub) { //もし、渡されてきたpropsがtargetなら、targetをレンダー
+export default function VirtualizedList(props) { 
 
     return (
       <ListWrapper>
@@ -65,11 +49,6 @@ export default function VirtualizedList(props) { //親コンポーネントか�
       </ListWrapper>
 
 
-      // <div className={classes.root}> 
-      //   <FixedSizeList height={400} width={"100%"} itemCount={200} itemCount={props.sub.length} itemData={{sub:props.sub, time:props.timeHandler}} >  
-      // {RenderRow}
-      //   </FixedSizeList>
-      // </div>
     );
   
 }

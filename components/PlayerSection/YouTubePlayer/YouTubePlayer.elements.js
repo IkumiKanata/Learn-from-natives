@@ -12,11 +12,7 @@ position: relative;
   overflow: auto;
   margin-top: 20px;
   margin-bottom: 50px;
-  /* width: '100%',
-    height: 500,
-    maxWidth: 500,
-    backgroundColor: theme.palette.background.paper,
-    overflow: 'auto', */
+
 `;
 
 export const YouTubePlayer = styled(YouTube)`
@@ -26,7 +22,5 @@ export const YouTubePlayer = styled(YouTube)`
   top: 0;
   left: 0;
 
-  /* @media screen and (min-width: 1025px) {
-    width:50%
-  } */
+
 `;
