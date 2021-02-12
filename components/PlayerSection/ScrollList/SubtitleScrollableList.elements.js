@@ -10,7 +10,7 @@ position: relative;
   padding-bottom: 56.25%;
   overflow: hidden;
   margin-top: 20px;
-  background-color:   #b3b3ff;
+  background-color:   #6495ed;
   border-radius:4px;
   border: solid 0.5px #6495ed;
   border: 1px solid hsla(0,0%,47.1%,.2);
@@ -24,7 +24,7 @@ justify-content: space-between;
   display: flex;
   margin: 1rem;
 
-  @media screen and (maxWidth: 800px) {
+  @media screen and (max-width: 700px) {
     margin:0;
   }
 `
@@ -37,7 +37,7 @@ export const ListPlayer = styled(FixedSizeList)`
   left: 0;
   border: solid 0.5px #6495ed ;
   border: 1px solid hsla(0,0%,47.1%,.2);
-  background-color:  #ccccff;
+  background-color:  #BFD3F7;
   display:flex;
 
 `;
@@ -46,7 +46,15 @@ export const List = styled(ListItem)`
 
 `;
 export const ListText = styled(ListItemText)`
+padding-left:15px;
+`;
+export const ListTime = styled(ListItemText)`
+padding-left:15px;
 
+@media screen and (max-width: 500px
+) {
+  display:none;
+}
 `;
 
 export const SubtitileSectionText = styled.p`
@@ -62,9 +70,9 @@ export const SubtitleButton = styled.button`
   color:white;
   border-radius:4px;
   padding: 10px;
+ 
 
-
-  @media screen and (maxWidth: 800px) {
+  @media screen and (max-width: 700px) {
 
     padding:0
     }

@@ -6,6 +6,7 @@ export const Form = styled.form`
     font: bold 16px sans-serif;
      max-width: 100%;
     position: relative;
+    padding-bottom:15px;
 `
 
 export const Input = styled.input`

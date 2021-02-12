@@ -11,7 +11,7 @@ position: relative;
   padding-bottom: 56.25%;
   overflow: auto;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 
 `;
 
