@@ -49,7 +49,7 @@ export default function App(props) {
 
   const getSubTitleDataList = async (videoIDList) => {
     const resultList = await Promise.all(
-      //promise.all promise aynsc await 非道j機処理-jsの処理を待たせる　promiseもwawaitみたいに待つよってやつで、allオプションは　　promiseの戻り値が配列としてリターンされるときに、使うことができる
+      //複数の非同期処理を全て実行するのがPromise.allメソッド。 allオプションは　　promiseの戻り値が配列としてリターンされるときに、使うことができる 
       videoIDList.map(
         async (
           videoID //mapのなかasync await を使う

@@ -20,13 +20,12 @@ export const homeObjTwo = {
   lightTopLine: true,
   lightText: true,
   lightTextDesc: true,
-  topLine: '学校で学んだのに話せない？',
-  headline: '',
-  description:
-    "Once you've joined, our team of specialist will reach out to you and get you set up in minutes.",
-  buttonLabel: 'Learn More',
+  topLine: '利用者の声：佐藤春樹さん',
+  headline: '取引先との会議でナチュラルな表現が出てくるようになりました！',
+  description:"仕事上海外の方と会議をすることが多いのですが、",
+  buttonLabel: "単語検索",
   imgStart: '',
-  // img: require('../../images/svg-2.svg'),
+  img: "/images/pexels-mentatdgt-937481.jpg",
   alt: 'Vault',
   start: ''
 };

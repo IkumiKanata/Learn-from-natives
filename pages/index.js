@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import InfoSection from "../components/InfoSection/InfoSection"
-import {homeObjOne, homeObjThree} from "../constants/DataForIndex"
+import {homeObjOne,homeObjTwo, homeObjThree} from "../constants/DataForIndex"
 
 
 export default function Home() {
@@ -14,6 +14,7 @@ export default function Home() {
       </Head>
       <InfoSection {...homeObjOne}></InfoSection>
       <InfoSection {...homeObjThree}></InfoSection>
+      <InfoSection {...homeObjTwo}></InfoSection>
     </>    
   )
 }  
