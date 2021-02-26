@@ -34,7 +34,7 @@ export default function App(props) {
   const getVideoIds = async (inputWord) => {
     const params = {
       params: {
-        size: 3,
+        size: 8,
         text: inputWord,
         "rapidapi-key": process.env.NEXT_PUBLIC_API_KEY,
       },
