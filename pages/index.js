@@ -14,7 +14,6 @@ export default function Home() {
       </Head>
       <InfoSection {...homeObjOne}></InfoSection>
       <InfoSection {...homeObjThree}></InfoSection>
-      <InfoSection {...homeObjTwo}></InfoSection>
     </>    
   )
 }  
