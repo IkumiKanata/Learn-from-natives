@@ -1,20 +1,18 @@
 import Head from 'next/head'
-import React, { useState, useEffect } from "react";import Link from "next/link";
+import React, { useState, useEffect,useContext } from "react";
+import Link from "next/link";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import firebase from "firebase"
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { UserContext } from "../lib/context";
+import { firestore, auth, serverTimestamp } from '../lib/firebase';
+
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB5TYufQVlkVtADAlS_xhVL2oL4k3HHyak",
-  authDomain: "learn-from-natives.firebaseapp.com",
-  projectId: "learn-from-natives",
-  storageBucket: "learn-from-natives.appspot.com",
-  messagingSenderId: "738772907323",
-  appId: "1:738772907323:web:3debff946ad22f1ed3b31e",
-  measurementId: "G-T778FW5NZ1"
+
 };
 // Initialize Firebase
 if (firebase.apps.length === 0) {
@@ -46,7 +44,7 @@ const useStyles = makeStyles({
 });
 
 export default function DictionaryCard() {
-
+  const user = useContext(UserContext);
   const classes = useStyles();
   const [words, setWords] = useState("");
   const [loading,setLoading] = useState(true);
@@ -55,7 +53,7 @@ export default function DictionaryCard() {
     setLoading(true);
     const db = firebase.firestore();
     const wordscontainer = [] 
-    const snapshot = await db.collection("targetwords").get();
+    const snapshot = await db.collection("users").doc("pAbXyDvWMUYZSMIFpU7677zb4DL2").collection("words").get();
   snapshot.forEach(doc => {
     wordscontainer.push(doc.data())
     console.log(doc.data())
@@ -67,20 +65,20 @@ export default function DictionaryCard() {
   useEffect(async () => {
    await getData();
    console.log(words)
- 
+  return () => {
+       cleanup
+  } 
   }, [])
 
    const handleClickDeleteButton = async () => {
     const db = firebase.firestore(); 
-    const snapshot = await db.collection("targetwords").doc(words[0].word).delete();
+    const snapshot = await db.collection(user.user.uid).doc(words[0].word).delete();
 
  
     //  return () => {
     //    cleanup
     //  }
    }
-  
-
 
 
   
@@ -89,32 +87,39 @@ export default function DictionaryCard() {
 
     {loading ? <CircularProgress style={{margin: "0 auto"}} />:
     <>
-   
+   {words.map((word) => {
+        return (
+          <div style={{display:"flex", flexWrap:"wrap", justifyContent:"center", marginBottom:"10px" }}>
+
+
+
+
     <Card className={classes.root}>
+      
       <button onClick={handleClickDeleteButton}>削除</button>
       <CardContent className={classes.pointerNone}>
-        <Typography className={classes.title} color="primary" gutterBottom>
+        {/* <Typography className={classes.title} color="primary" gutterBottom>
           Your Search Word 
-        </Typography>
-        {console.log(words[0].word)}
+        </Typography> */}
+        {console.log(word.word)}
         <Typography variant="h5" component="h2">
-        {words[0].word}
+        {word.word}
 
         </Typography>
           
         <Typography className={classes.pos} color="textSecondary">
-        {words[0].meanings[0].partOfSpeech}
+        {word.meanings[0].partOfSpeech}
         </Typography>
         <Typography variant="body2" component="p">
         {"[ Definition ]"}
         <br />
         
-        {words[0].meanings[0].definitions[0].definition}
+        {word.meanings[0].definitions[0].definition}
         <br />
         <br />
         {"[  Example sentense  ]"}
         <br />
-        {words[0].meanings[0].definitions[0].example || "no example sentense found"} 
+        {word.meanings[0].definitions[0].example || "no example sentense found"} 
         
         </Typography>
         </CardContent>
@@ -124,15 +129,20 @@ export default function DictionaryCard() {
         Learn more with:<span>&ensp;</span><br />
         
         
-        <a href={"https://www.thefreedictionary.com/" + words[0].word} target="_blank" rel="noopener noreferrer">EN-EN DICT</a>  
+        <a href={"https://www.thefreedictionary.com/" + word.word} target="_blank" rel="noopener noreferrer">EN-EN DICT</a>  
         <span>&ensp;</span>
-        <a href={"https://ejje.weblio.jp/content/" + words[0].word} target="_blank" rel="noopener noreferrer">JP-EN DICT</a>
+        <a href={"https://ejje.weblio.jp/content/" + word.word} target="_blank" rel="noopener noreferrer">JP-EN DICT</a>
         
         </div>
       <br />
 
 
     </Card>
+          </div>
+          
+        );
+      })}
+    
       </>}
       
       </div>

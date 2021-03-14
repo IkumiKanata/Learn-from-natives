@@ -1,6 +1,8 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useContext} from "react";
 import {FaBars, FaTimes} from "react-icons/fa"
 import Link from "next/link"
+import { UserContext } from '../../lib/context';
+import {signInWithGoogle, signInAnonymously, SignOut} from "../Loginout/logInOut"
 
 
 
@@ -26,13 +28,12 @@ const DynamicComponent = dynamic(() =>
 
 
 
-
 const Navbar = () => {
-const [click, setClick] = useState(false)
-
-
+const [click, setClick] = useState(false);
+const {user} = useContext(UserContext);
 const handleClick = () => setClick(!click);
 const closeMobileMenu = () => setClick(false);
+
 
 
   return (
@@ -52,17 +53,26 @@ const closeMobileMenu = () => setClick(false);
             {click ? <FaTimes />:<FaBars/>}
         </MobileIcon>
         <NavMenu onClick={handleClick} click={click}>
-            <NavItem>
+            {/* <NavItem>
               <Link href="/" passHref>
                 <NavLinks >Home</NavLinks>
               </Link> 
-            </NavItem>
+            </NavItem> */}
             <NavItem>
               <Link href="/VideoSelect" passHref>
-                <NavLinks onClick={closeMobileMenu}>Video Search</NavLinks>
+                <NavLinks onClick={closeMobileMenu}>Search</NavLinks>
               </Link> 
             </NavItem>
-            {/* <DynamicComponent /> */}
+            {user && <NavItem>
+              <Link href="/FavoriteWords" passHref>
+                <NavLinks onClick={closeMobileMenu}>Favorite</NavLinks>
+              </Link> 
+            </NavItem>}
+            {!user && <NavItem>
+
+                <NavLinks onClick={signInAnonymously}>Guest Login</NavLinks>
+            </NavItem>}
+            <DynamicComponent />
         </NavMenu>
       </NavbarContainer>
     </Nav>

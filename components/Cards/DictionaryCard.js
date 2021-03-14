@@ -1,23 +1,13 @@
-import React from 'react';
+import React, { useState,useContext} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import firebase from "firebase"
+import firebase from "firebase";
+import { UserContext } from '../../lib/context';
+import toast from 'react-hot-toast';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyB5TYufQVlkVtADAlS_xhVL2oL4k3HHyak",
-  authDomain: "learn-from-natives.firebaseapp.com",
-  projectId: "learn-from-natives",
-  storageBucket: "learn-from-natives.appspot.com",
-  messagingSenderId: "738772907323",
-  appId: "1:738772907323:web:3debff946ad22f1ed3b31e",
-  measurementId: "G-T778FW5NZ1"
-};
-// Initialize Firebase
-if (firebase.apps.length === 0) {
-  firebase.initializeApp(firebaseConfig);
-}
+
 
 
 const useStyles = makeStyles({
@@ -44,11 +34,12 @@ const useStyles = makeStyles({
 });
 
 export default function DictionaryCard(props) {
+  const user = useContext(UserContext);
   const classes = useStyles();
-
    const handleClickFetchButton = async () => {
      const db = firebase.firestore(); 
-    const doc = await db.collection("targetwords").doc(props.dictionaryData[0].word).set(props.dictionaryData[0]);
+    const doc = await db.collection("users").doc(user.user.uid).collection("words").doc(props.dictionaryData[0].word).set(props.dictionaryData[0]);
+    toast.success("Saved!")
    }
 
 
@@ -57,7 +48,7 @@ export default function DictionaryCard(props) {
 
   return (
     <Card className={classes.root}>
-      <button onClick={handleClickFetchButton}>お気に入り</button>
+      {user.user&& <button onClick={handleClickFetchButton}>お気に入り</button>}
       <CardContent className={classes.pointerNone}>
         <Typography className={classes.title} color="primary" gutterBottom>
           Your Search Word 

@@ -1,6 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Link from "next/link";
 import { Button } from '../../globalStyles';
+import { UserContext } from '../../lib/context';
+import {signInWithGoogle, signInAnonymously, SignOut} from "../Loginout/logInOut"
+
 
 
 import {
@@ -13,7 +16,7 @@ export default function NavButton() {
   const [click, setClick] = useState(false)
   const [button, setButton] = useState(true)
   const closeMobileMenu = () => setClick(false);
-
+  const {user, username} = useContext(UserContext);
 
   const showButton = () => {
       if(window.innerWidth <= 960) {
@@ -33,21 +36,17 @@ export default function NavButton() {
     return (
       <NavItemBtn>
               {button? (
-                <Link href="/" passHref>
                   <NavBtnLink >
-                      <Button primary>
-                        sign up
+                      <Button onClick={user? SignOut: signInWithGoogle} primary >
+                        {user ? "Sign out" : "sign in / sign up"}
                       </Button>
                   </NavBtnLink>
-                </Link>
               ) : 
-              <Link href="/" passHref>
               <NavBtnLink>
-                <Button onclick={closeMobileMenu} fontBig primary>
-                  sign up
+                <Button onClick={user? SignOut: signInWithGoogle} fontBig primary>
+                {user ? "Sign out" : "sign in / sign up"}
                 </Button>
                 </NavBtnLink>
-              </Link>
                 }
        </NavItemBtn>
     )

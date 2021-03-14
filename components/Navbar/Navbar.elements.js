@@ -87,9 +87,11 @@ text-align:center;
 export const NavItem = styled.li`
 height: 80px;
 border-bottom: 2px solid transparent;
+cursor : pointer;
 
 &:hover {
   border-bottom: 2px solid #4b59f7;
+  
 }
 
 @media screen and (max-width: 960px){
@@ -97,6 +99,7 @@ border-bottom: 2px solid transparent;
 
   &:hover {
     border:none;
+    
   }
 }
 `;
