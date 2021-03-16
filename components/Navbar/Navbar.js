@@ -60,17 +60,17 @@ const closeMobileMenu = () => setClick(false);
             </NavItem> */}
             <NavItem>
               <Link href="/VideoSelect" passHref>
-                <NavLinks onClick={closeMobileMenu}>Search</NavLinks>
+                <NavLinks onClick={closeMobileMenu}>単語検索</NavLinks>
               </Link> 
             </NavItem>
             {user && <NavItem>
               <Link href="/FavoriteWords" passHref>
-                <NavLinks onClick={closeMobileMenu}>Favorite</NavLinks>
+                <NavLinks onClick={closeMobileMenu}>お気に入り単語</NavLinks>
               </Link> 
             </NavItem>}
             {!user && <NavItem>
 
-                <NavLinks onClick={signInAnonymously}>Guest Login</NavLinks>
+                <NavLinks onClick={signInAnonymously}>ゲストログイン</NavLinks>
             </NavItem>}
             <DynamicComponent />
         </NavMenu>

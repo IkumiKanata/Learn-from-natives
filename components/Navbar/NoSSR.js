@@ -38,13 +38,13 @@ export default function NavButton() {
               {button? (
                   <NavBtnLink >
                       <Button onClick={user? SignOut: signInWithGoogle} primary >
-                        {user ? "Sign out" : "sign in / sign up"}
+                        {user ? "サインアウト" : "登録/ログイン"}
                       </Button>
                   </NavBtnLink>
               ) : 
               <NavBtnLink>
                 <Button onClick={user? SignOut: signInWithGoogle} fontBig primary>
-                {user ? "Sign out" : "sign in / sign up"}
+                {user ? "サインアウト" : "登録/ログイン"}
                 </Button>
                 </NavBtnLink>
                 }

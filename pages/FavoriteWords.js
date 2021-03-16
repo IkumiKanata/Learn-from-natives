@@ -14,6 +14,7 @@ import AuthCheck from "../components/AuthCheck"
 
 
 
+
 const useStyles = makeStyles({
   root: {
 
@@ -46,8 +47,9 @@ export default function DictionaryCard() {
   const getData = async () => {
     setLoading(true);
     const db = firebase.firestore();
+    const uid = await auth.currentUser.uid;
     const wordscontainer = [] 
-    const snapshot = await db.collection("users").doc("pAbXyDvWMUYZSMIFpU7677zb4DL2").collection("words").get();
+    const snapshot = await db.collection("users").doc(uid).collection("words").get();
   snapshot.forEach(doc => {
     wordscontainer.push(doc.data())
     console.log(doc.data())
@@ -56,14 +58,14 @@ export default function DictionaryCard() {
   setLoading(false);
 };
 
-  // useEffect(async () => {
-  //  await getData();
- 
-  // }, [])
+
 
    const handleClickDeleteButton = async (word) => {
     const db = firebase.firestore(); 
-    await db.collection("users").doc("pAbXyDvWMUYZSMIFpU7677zb4DL2").collection("words").doc(word).delete();
+    const uid = await auth.currentUser.uid;
+
+    await db.collection("users").doc(uid).collection("words").doc(word).delete();
+    getData()
 
 
  
@@ -86,9 +88,6 @@ export default function DictionaryCard() {
        <div style={{display:"flex", flexWrap:"wrap", justifyContent:"center", marginBottom:"10px" }}>
     <Card className={classes.root}>
   
-      <button 
-      onClick={() => {handleClickDeleteButton(word.word)}}
-      >削除</button>
       <CardContent className={classes.pointerNone}>
         {/* <Typography className={classes.title} color="primary" gutterBottom>
           Your Search Word 
@@ -127,6 +126,15 @@ export default function DictionaryCard() {
         
         </div>
       <br />
+<button 
+onClick={() => {handleClickDeleteButton(word.word)}}
+>削除</button>
+<Link passHref href={{ pathname: '/VideoSelect', query: { keyword: word.word  } }}>
+<button 
+>{word.wordを使った}この単語の動画検索</button>
+      </Link>
+
+
 
 
     </Card>
