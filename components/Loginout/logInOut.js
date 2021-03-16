@@ -8,12 +8,12 @@ import toast from 'react-hot-toast';
 // Sign in with Google button
 export const signInWithGoogle = async () => {
     await auth.signInWithPopup(googleAuthProvider);
-    toast.success("Loged in!")
+    toast.success("Loged in with Google!")
   };
 
 export const signInAnonymously = async () => {
     await auth.signInAnonymously();
-    toast.success("Loged in!")
+    toast.success("Loged in as a guest!")
 
   } 
 

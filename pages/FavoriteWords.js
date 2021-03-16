@@ -9,15 +9,9 @@ import firebase from "firebase"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserContext } from "../lib/context";
 import { firestore, auth, serverTimestamp } from '../lib/firebase';
+import AuthCheck from "../components/AuthCheck"
 
 
-const firebaseConfig = {
-
-};
-// Initialize Firebase
-if (firebase.apps.length === 0) {
-  firebase.initializeApp(firebaseConfig);
-}
 
 
 const useStyles = makeStyles({
@@ -62,17 +56,15 @@ export default function DictionaryCard() {
   setLoading(false);
 };
 
-  useEffect(async () => {
-   await getData();
-   console.log(words)
-  return () => {
-       cleanup
-  } 
-  }, [])
+  // useEffect(async () => {
+  //  await getData();
+ 
+  // }, [])
 
-   const handleClickDeleteButton = async () => {
+   const handleClickDeleteButton = async (word) => {
     const db = firebase.firestore(); 
-    const snapshot = await db.collection(user.user.uid).doc(words[0].word).delete();
+    await db.collection("users").doc("pAbXyDvWMUYZSMIFpU7677zb4DL2").collection("words").doc(word).delete();
+
 
  
     //  return () => {
@@ -84,19 +76,19 @@ export default function DictionaryCard() {
   
   return (
     <div>
+      <AuthCheck>
 
+      <button onClick={getData}>更新</button>
     {loading ? <CircularProgress style={{margin: "0 auto"}} />:
     <>
    {words.map((word) => {
-        return (
-          <div style={{display:"flex", flexWrap:"wrap", justifyContent:"center", marginBottom:"10px" }}>
-
-
-
-
+     return (
+       <div style={{display:"flex", flexWrap:"wrap", justifyContent:"center", marginBottom:"10px" }}>
     <Card className={classes.root}>
-      
-      <button onClick={handleClickDeleteButton}>削除</button>
+  
+      <button 
+      onClick={() => {handleClickDeleteButton(word.word)}}
+      >削除</button>
       <CardContent className={classes.pointerNone}>
         {/* <Typography className={classes.title} color="primary" gutterBottom>
           Your Search Word 
@@ -140,11 +132,12 @@ export default function DictionaryCard() {
     </Card>
           </div>
           
-        );
-      })}
+          );
+        })}
     
       </>}
       
+        </AuthCheck>
       </div>
   );
 }

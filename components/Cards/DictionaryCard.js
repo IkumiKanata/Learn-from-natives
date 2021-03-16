@@ -36,9 +36,11 @@ const useStyles = makeStyles({
 export default function DictionaryCard(props) {
   const user = useContext(UserContext);
   const classes = useStyles();
+
    const handleClickFetchButton = async () => {
      const db = firebase.firestore(); 
     const doc = await db.collection("users").doc(user.user.uid).collection("words").doc(props.dictionaryData[0].word).set(props.dictionaryData[0]);
+    
     toast.success("Saved!")
    }
 
